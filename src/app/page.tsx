@@ -133,7 +133,7 @@ export default function Home() {
         </div>
         
         <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem', color: '#111827', fontWeight: 700 }}>
-          FHE Playground
+          ZAMA FHE Playground
         </h1>
         <p style={{ fontSize: '1.2rem', color: '#6b7280', marginBottom: '1rem' }}>
           Experience Fully Homomorphic Encryption
