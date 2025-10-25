@@ -1,8 +1,8 @@
-import './globals.css'
 import type { Metadata } from 'next'
+import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'FHEVM Confidential Token Guide',
+  title: 'FHEVM Token Guide',
   description: 'Learn to build confidential smart contracts with Zama',
 }
 
