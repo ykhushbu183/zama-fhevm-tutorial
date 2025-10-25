@@ -15,7 +15,6 @@ export default function Home() {
   const [computeResult, setComputeResult] = useState('')
   const [showResult, setShowResult] = useState(false)
 
-  // Simulate encryption
   const simulateEncrypt = (value: string): string => {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*'
     let encrypted = ''
@@ -69,17 +68,6 @@ export default function Home() {
 
   const handleRevealResult = () => {
     if (!computeResult) return
-    const n1 = parseFloat(num1)
-    const n2 = parseFloat(num2)
-    let result = 0
-    
-    switch(operation) {
-      case '+': result = n1 + n2; break
-      case '-': result = n1 - n2; break
-      case '×': result = n1 * n2; break
-      case '÷': result = n2 !== 0 ? n1 / n2 : 0; break
-    }
-    
     setTimeout(() => {
       setShowResult(true)
     }, 500)
@@ -100,27 +88,98 @@ export default function Home() {
     setShowResult(false)
   }
 
+  const getComputeResult = () => {
+    const n1 = parseFloat(num1)
+    const n2 = parseFloat(num2)
+    switch(operation) {
+      case '+': return n1 + n2
+      case '-': return n1 - n2
+      case '×': return n1 * n2
+      case '÷': return n2 !== 0 ? n1 / n2 : 0
+      default: return 0
+    }
+  }
+
   return (
     <main style={{ maxWidth: '1000px', margin: '0 auto' }}>
-      {/* Header */}
+      {/* Header with Zama Logo */}
       <header style={{ 
         textAlign: 'center', 
         marginBottom: '3rem',
         background: 'rgba(255, 255, 255, 0.95)',
-        padding: '2rem',
+        padding: '2.5rem 2rem',
         borderRadius: '16px',
         boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)'
       }}>
-        <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>🔐</div>
+        {/* Zama Logo */}
+        <div style={{
+          width: '80px',
+          height: '80px',
+          background: '#FFC700',
+          borderRadius: '12px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          margin: '0 auto 1rem',
+          boxShadow: '0 4px 12px rgba(255, 199, 0, 0.3)'
+        }}>
+          <span style={{
+            fontSize: '3rem',
+            fontWeight: 900,
+            color: '#000',
+            fontFamily: 'Arial Black, sans-serif',
+            letterSpacing: '-2px'
+          }}>Z</span>
+        </div>
+        
         <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem', color: '#111827', fontWeight: 700 }}>
           FHE Playground
         </h1>
-        <p style={{ fontSize: '1.2rem', color: '#6b7280', marginBottom: '0.5rem' }}>
+        <p style={{ fontSize: '1.2rem', color: '#6b7280', marginBottom: '1rem' }}>
           Experience Fully Homomorphic Encryption
         </p>
-        <p style={{ fontSize: '0.9rem', color: '#9ca3af' }}>
+        <p style={{ fontSize: '0.9rem', color: '#9ca3af', marginBottom: '1.5rem' }}>
           No wallet • No fees • Instant results
         </p>
+        
+        {/* About Zama */}
+        <div style={{
+          background: 'linear-gradient(135deg, #FFF8DC 0%, #FFFACD 100%)',
+          padding: '1.5rem',
+          borderRadius: '12px',
+          border: '2px solid #FFC700',
+          textAlign: 'left',
+          marginTop: '1.5rem'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', marginBottom: '0.75rem' }}>
+            <div style={{
+              width: '40px',
+              height: '40px',
+              background: '#FFC700',
+              borderRadius: '8px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginRight: '0.75rem'
+            }}>
+              <span style={{ fontSize: '1.5rem', fontWeight: 900, color: '#000' }}>Z</span>
+            </div>
+            <h3 style={{ margin: 0, color: '#1f2937', fontSize: '1.2rem', fontWeight: 600 }}>
+              About Zama
+            </h3>
+          </div>
+          <p style={{ margin: 0, color: '#4b5563', lineHeight: 1.6, fontSize: '0.95rem' }}>
+            Zama is building the first confidential layer for public blockchains using Fully Homomorphic Encryption (FHE). 
+            Their technology enables smart contracts to compute on encrypted data without ever decrypting it, 
+            bringing true privacy to DeFi, tokens, and governance while maintaining transparency and verifiability.
+          </p>
+          <div style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid rgba(0,0,0,0.1)' }}>
+            <strong style={{ color: '#1f2937', fontSize: '0.9rem' }}>🚀 Key Features:</strong>
+            <div style={{ marginTop: '0.5rem', fontSize: '0.85rem', color: '#6b7280' }}>
+              • End to end encryption • Post quantum secure • Solidity compatible • Cross chain confidentiality
+            </div>
+          </div>
+        </div>
       </header>
 
       {/* Tool 1: Basic Encryption/Decryption */}
@@ -238,8 +297,7 @@ export default function Home() {
             background: 'linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%)',
             padding: '1.5rem',
             borderRadius: '10px',
-            border: '2px solid #6ee7b7',
-            animation: 'fadeIn 0.5s ease'
+            border: '2px solid #6ee7b7'
           }}>
             <div style={{ fontSize: '0.75rem', marginBottom: '0.5rem', color: '#065f46', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px' }}>
               ✅ Decrypted Value:
@@ -449,14 +507,13 @@ export default function Home() {
             padding: '2rem',
             borderRadius: '10px',
             border: '2px solid #6ee7b7',
-            textAlign: 'center',
-            animation: 'fadeIn 0.5s ease'
+            textAlign: 'center'
           }}>
             <div style={{ fontSize: '0.9rem', marginBottom: '0.5rem', color: '#065f46', fontWeight: 700 }}>
               ✅ Final Answer:
             </div>
             <div style={{ fontSize: '3rem', fontWeight: 'bold', color: '#047857', marginBottom: '0.5rem' }}>
-              {num1} {operation} {num2} = {eval(`${num1}${operation === '×' ? '*' : operation === '÷' ? '/' : operation}${num2}`)}
+              {num1} {operation} {num2} = {getComputeResult()}
             </div>
             <div style={{ fontSize: '0.8rem', color: '#065f46', opacity: 0.8 }}>
               🎉 Decrypted successfully!
@@ -507,29 +564,30 @@ export default function Home() {
         <div style={{
           marginTop: '1.5rem',
           padding: '1.5rem',
-          background: 'linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)',
+          background: 'linear-gradient(135deg, #FFF8DC 0%, #FFFACD 100%)',
           borderRadius: '10px',
-          border: '2px solid #60a5fa'
+          border: '2px solid #FFC700'
         }}>
-          <strong style={{ color: '#1e40af', fontSize: '1.1rem' }}>🚀 In Production with Zama:</strong>
-          <p style={{ margin: '0.75rem 0 0 0', color: '#1e3a8a', lineHeight: 1.6 }}>
+          <strong style={{ color: '#1f2937', fontSize: '1.1rem' }}>🚀 In Production with Zama:</strong>
+          <p style={{ margin: '0.75rem 0 0 0', color: '#4b5563', lineHeight: 1.6 }}>
             Zama's FHEVM enables this on real blockchains — smart contracts compute on encrypted data without ever seeing plaintext, enabling truly confidential DeFi, private tokens, and encrypted governance!
           </p>
         </div>
       </section>
 
-      {/* Footer */}
+      {/* Footer with Watermark */}
       <footer style={{ 
         textAlign: 'center', 
         padding: '2rem',
         background: 'rgba(255, 255, 255, 0.95)',
         borderRadius: '16px',
-        boxShadow: '0 4px 24px rgba(0, 0, 0, 0.1)'
+        boxShadow: '0 4px 24px rgba(0, 0, 0, 0.1)',
+        position: 'relative'
       }}>
         <p style={{ color: '#6b7280', marginBottom: '0.75rem', fontSize: '0.95rem' }}>
           Built for Zama Season 3 Creator Campaign
         </p>
-        <p style={{ marginBottom: '0.5rem' }}>
+        <p style={{ marginBottom: '1rem' }}>
           <a 
             href="https://zama.ai" 
             target="_blank" 
@@ -544,6 +602,45 @@ export default function Home() {
             Learn more about Zama →
           </a>
         </p>
+        
+        {/* Watermark */}
+        <div style={{
+          marginTop: '1.5rem',
+          paddingTop: '1.5rem',
+          borderTop: '2px solid #e5e7eb'
+        }}>
+          <a
+            href="https://x.com/sonuwork37"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              padding: '0.75rem 1.5rem',
+              background: 'linear-gradient(135deg, #1DA1F2 0%, #0d8bd9 100%)',
+              color: 'white',
+              textDecoration: 'none',
+              borderRadius: '10px',
+              fontWeight: 600,
+              fontSize: '1rem',
+              transition: 'all 0.2s ease',
+              boxShadow: '0 2px 8px rgba(29, 161, 242, 0.3)'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'translateY(-2px)'
+              e.currentTarget.style.boxShadow = '0 4px 12px rgba(29, 161, 242, 0.4)'
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)'
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(29, 161, 242, 0.3)'
+            }}
+          >
+            <span style={{ fontSize: '1.2rem' }}>𝕏</span>
+            <span>Made by @sonuwork37</span>
+          </a>
+        </div>
+        
         <div style={{ marginTop: '1rem', fontSize: '0.85rem', color: '#9ca3af' }}>
           @zama_fhe • #FHE • #Web3 • #Privacy
         </div>
