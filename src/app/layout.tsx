@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'FHEVM Token Guide',
-  description: 'Learn to build confidential smart contracts with Zama',
+  title: 'FHE Playground - Zama Interactive Demo',
+  description: 'Experience Fully Homomorphic Encryption in your browser',
 }
 
 export default function RootLayout({
