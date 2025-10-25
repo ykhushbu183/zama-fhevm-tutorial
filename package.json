@@ -1,5 +1,5 @@
 {
-  "name": "fhevm-confidential-token-guide",
+  "name": "fhevm-token-guide",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -9,11 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
     "next": "14.2.0",
-    "fhevmjs": "^0.5.0",
-    "ethers": "^5.7.2"
+    "@zama-fhe/fhevmjs": "^0.6.0",
+    "ethers": "^6.13.0"
   },
   "devDependencies": {
     "typescript": "^5.3.0",
