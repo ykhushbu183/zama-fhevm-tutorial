@@ -1,22 +1,35 @@
 # zama-fhevm-tutorial
 
-# FHEVM Confidential Token Guide
+# FHE Playground
 
-A comprehensive tutorial for building confidential smart contracts using Zama's FHE technology.
+🔐 Interactive demonstration of Fully Homomorphic Encryption in the browser
 
-## Live Demo
+## What is This?
 
-🔗 [View Live](https://your-app.vercel.app)
+Experience how FHE enables computing on encrypted data without ever decrypting it. Perfect for understanding Zama's confidential blockchain technology.
 
-## What This Is
+## Features
 
-Learn how to build encrypted tokens on public blockchains using Fully Homomorphic Encryption.
+✅ **Encrypt & Decrypt** - See how data gets encrypted and only you can decrypt  
+✅ **Encrypted Computation** - Perform math on encrypted numbers  
+✅ **No Wallet Required** - Works instantly in any browser  
+✅ **Educational** - Learn FHE concepts interactively  
+
 
 ## Tech Stack
 
 - Next.js 14
 - TypeScript
-- Zama FHEVM
+- Zero dependencies (pure browser-based demo)
 
-## Quick Start
+## About Zama Season 3
+
+This interactive playground was created for Zama Season 3 Creator Campaign to help developers understand Fully Homomorphic Encryption.
+
+Learn more at [zama.ai](https://zama.ai)
+
+## License
+
+MIT
+
 
